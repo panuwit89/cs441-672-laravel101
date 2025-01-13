@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Songs;
 
+use App\Models\Song;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -11,12 +12,7 @@ class Track extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(
-        public array $song
-    )
-    {
-
-    }
+    public function __construct(public Song $song) {}
 
     /**
      * Get the view / contents that represent the component.
