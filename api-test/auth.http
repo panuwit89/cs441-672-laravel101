@@ -1,0 +1,34 @@
+### POST request to login
+POST {{ host }}/api/login
+Accept: application/json
+Content-Type: application/json
+
+{ "email" : "user01@example.com", "password" : "password" }
+###
+
+@accessToken = 1|s4nIwPGuLF8uuCZmkZQp0PImn5P4M0uxciJEVpR3197569b8
+@accessToken2 = 2|xoys3lk8rpJNWHyJ7k5MilAFUkWmYZhwxjHOlLpX12bb1379
+@adminToken = 3|TL1Y38EAVMuKXi12iM3zGSIMYM6y7bHNZkHbiAxz4f786470
+
+###
+GET {{ host }}/api/user
+Accept: application/json
+Authorization: Bearer {{ accessToken }}
+
+###
+
+
+### POST request to login (ADMIN)
+POST {{ host }}/api/login
+Accept: application/json
+Content-Type: application/json
+
+{ "email" : "admin@example.com", "password" : "adminpass" }
+###
+
+### DELETE request to revoke
+DELETE {{ host }}/api/revoke
+Accept: application/json
+Authorization: Bearer {{ adminToken }}
+
+###

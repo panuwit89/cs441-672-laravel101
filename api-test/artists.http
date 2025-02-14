@@ -1,0 +1,71 @@
+@localhost = http://localhost
+@accessToken = 1|s4nIwPGuLF8uuCZmkZQp0PImn5P4M0uxciJEVpR3197569b8
+@adminToken = 3|TL1Y38EAVMuKXi12iM3zGSIMYM6y7bHNZkHbiAxz4f786470
+@token = {{ accessToken }}
+
+### GET request to example server (Show Artists)
+GET {{ host }}/api/artists
+Accept: application/json
+Authorization: Bearer {{ token }}
+
+###
+
+### GET request to example server (Show Artists)
+GET {{ localhost}}/api/artists
+Accept: application/json
+Authorization: Bearer {{ token }}
+
+###
+
+### Get request to /api/artists/{id} (Show Artist)
+GET  http://localhost/api/artists/100
+Accept: application/json
+Authorization: Bearer {{ token }}
+
+###
+
+### POST request to /api/artists (Store new artist)
+POST http://localhost/api/artists
+Accept: application/json # return type (ex. error)
+Content-Type: application/json # body type
+Authorization: Bearer {{ token }}
+
+{ "name": "นูโว" }
+###
+
+### POST request to /api/artists with image
+POST http://localhost/api/artists
+Accept: application/json
+Content-Type: multipart/form-data; boundary=boundary
+Authorization: Bearer {{ token }}
+
+--boundary
+Content-Disposition: form-data; name="image"; filename="keshi.jpg"
+
+// The 'keshi.jpg' file will be uploaded
+< ./keshi.jpg
+--boundary
+Content-Disposition: form-data; name="name"
+
+Keshi
+--boundary
+###
+
+### PATCH request to /api/artists/{id} (Update)
+PATCH http://localhost/api/artists/57
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{ token }}
+
+{
+    "name": "Name Keshi"
+}
+
+###
+
+### DELETE request to /api/artists/{id} (Delete artist by id)
+DELETE http://localhost/api/artists/56
+Accept: application/json
+Authorization: Bearer {{ token }}
+
+###
